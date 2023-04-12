@@ -9,10 +9,15 @@ menuItems.forEach(item => {
     item.classList.remove('animated', 'pulse');
   });
 });
-metamaskButton.addEventListener('click', () => {
-    if (typeof window.ethereum !== 'undefined') {
-      console.log('MetaMask is installed!');
-    } else {
-      alert('Пожалуйста, установите MetaMask!');
-    }
-  });
+async function connect() {
+  try {
+    // запрашиваем подключение к кошельку MetaMask
+    await window.ethereum.enable();
+    // Если пользователь подключился, выводим его адрес кошелька
+    const accounts = await window.ethereum.request({ method: 'eth_accounts' });
+    const address = accounts[0];
+    alert(`Connected to MetaMask with address: ${address}`);
+  } catch (error) {
+    console.error(error);
+  }
+}
