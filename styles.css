@@ -74,3 +74,17 @@ header {
 .metamask-button:hover {
   background-color: #ff8c00;
 }
+.navbar {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.navbar-brand {
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+.connect-metamask {
+  margin-left: 1rem;
+}
